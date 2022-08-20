@@ -1,0 +1,234 @@
+<div class="div-form columns is-centered card">
+  <div class="column is-two-thirds">
+    <form method="post" [formGroup]="form" (ngSubmit)="submitForm()">
+      <div class="columns">
+        <div class="column"><b>Регистрация</b></div>
+      </div>
+      <div class="columns is-tablet">
+        <div class="column is-offset-1 is-11">
+          <b>Вы регистрируетесь как</b>
+          <div class="column is-11">
+            <label class="radio">
+              <input type="radio" name="answer" (click)="setBuyer()">
+              <b>Покупатель</b>
+            </label>
+          </div>
+          <div class="column is-11">
+            <label class="radio">
+              <input type="radio" name="answer" (click)="setSalesman()">
+              <b>Поставщик</b>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-mobile is-tablet is-desktop is-multiline">
+        <div class="column is-2-desktop is-2-tablet is-3-mobile form-field">
+          <label for="email">Эл.Почта</label>
+        </div>
+        <div class="column is-10-desktop is-10-tablet is-9-mobile">
+          <div class="control">
+            <input class="input" id="email" type="text" formControlName="email">
+          </div>
+        </div>
+        <div *ngIf="form.get('email')!.invalid && form.get('email')!.touched"
+             class="column is-offset-3-mobile is-offset-2">
+          <p>Поле email должно быть заполнено и
+            являться email'ом!</p>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column"><b>Название организации</b></div>
+      </div>
+      <div class="columns is-mobile is-desktop is-tablet is-multiline">
+        <div class="column is-2-desktop is-3-mobile is-2-tablet form-field">
+          <label for="person">ИП или Юр.лицо</label>
+        </div>
+        <div class="column is-10-desktop is-9-mobile is-10-tablet">
+          <div class="control">
+            <input class="input" id="person" type="text" formControlName="person">
+          </div>
+        </div>
+        <div *ngIf="form.get('person')!.invalid && form.get('person')!.touched"
+             class="column is-offset-3-mobile is-offset-2">
+          <p>Поле должно быть заполнено!</p>
+        </div>
+      </div>
+      <div class="columns is-mobile is-desktop is-tablet is-multiline">
+        <div class="column is-3-mobile is-2-desktop is-2-tablet form-field">
+          <label for="INN">ИНН</label>
+        </div>
+        <div class="column is-9-mobile is-10-desktop is-10-tablet">
+          <div class="control">
+            <input class="input" id="INN" type="text" formControlName="INN">
+          </div>
+        </div>
+        <div *ngIf="form.get('INN')!.invalid && form.get('INN')!.touched" class="column is-offset-3-mobile is-offset-2">
+          <p>Поле должно быть заполнено!</p>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column"><b>Фактический адрес</b></div>
+      </div>
+      <div class="columns is-mobile is-desktop is-tablet is-multiline">
+        <div class="column is-3-mobile is-2-desktop is-2-tablet form-field">
+          <label for="city">Ваш город</label>
+        </div>
+        <div class="column is-9-mobile is-10-desktop is-10-tablet">
+          <div class="control">
+            <input class="input" id="city" type="text" formControlName="city">
+          </div>
+        </div>
+        <div *ngIf="form.get('city')!.invalid && form.get('city')!.touched"
+             class="column is-offset-3-mobile is-offset-2">
+          <p>Поле должно быть заполнено!</p>
+        </div>
+      </div>
+      <div class="columns is-mobile is-desktop is-multiline is-tablet">
+        <div class="column is-2-desktop is-3-mobile is-2-tablet form-field">
+          <label for="street">Улица</label>
+        </div>
+        <div class="column is-4-desktop is-9-mobile is-10-tablet">
+          <div class="control">
+            <input class="input" id="street" type="text" formControlName="street">
+          </div>
+        </div>
+        <div class="column is-1-desktop is-3-mobile is-2-tablet form-field">
+          <label for="house">Дом/Стр.</label>
+        </div>
+        <div class="column is-3-desktop is-9-mobile is-4-tablet">
+          <div class="control">
+            <input class="input" id="house" type="text" formControlName="house">
+          </div>
+        </div>
+        <div class="column is-1-desktop is-3-mobile is-2-tablet form-field">
+          <label for="office">Офис</label>
+        </div>
+        <div class="column is-1-desktop is-9-mobile is-4-tablet">
+          <div class="control">
+            <input class="input" id="office" type="text" formControlName="office">
+          </div>
+        </div>
+        <div *ngIf="form.get('street')!.invalid && form.get('street')!.touched || form.get('house')!.invalid &&
+             form.get('house')!.touched || form.get('office')!.invalid && form.get('office')!.touched"
+             class="column is-offset-3-mobile is-offset-2">
+          <p>
+            Поля должны быть заполнены!</p>
+        </div>
+      </div>
+      <div class="columns is-desktop is-mobile is-tablet is-multiline">
+        <div class="column is-2-desktop is-3-mobile is-2-tablet form-field">
+          <label for="tel">Телефон</label>
+        </div>
+        <div class="column is-10-desktop is-9-mobile is-10-tablet">
+          <div class="field is-expanded">
+            <div class="field has-addons">
+              <p class="control">
+                <a class="button is-static">
+                  +7
+                </a>
+              </p>
+              <p class="control is-expanded">
+                <input class="input" type="tel" id="tel" formControlName="tel">
+              </p>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="form.get('tel')!.invalid && form.get('tel')!.touched" class="column is-offset-3-mobile is-offset-2">
+          <p>
+            Поле должно быть заполнено!</p>
+        </div>
+      </div>
+      <div *ngIf="isSalesman" class="columns is-desktop is-mobile is-tablet div-site is-multiline">
+        <div class="column is-2-desktop is-3-mobile is-2-tablet form-field">
+          <label for="site">Сайт вашей компании</label>
+        </div>
+        <div class="column is-10-desktop is-9-mobile is-10-tablet">
+          <div class="control">
+            <input class="input" id="site" type="text" formControlName="site">
+          </div>
+        </div>
+        <div *ngIf="form.get('site')!.touched && isSalesman"
+             class="column is-offset-3-mobile is-offset-2">
+          <p>Поле должно быть заполнено!</p>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column"><b>Виды деятельности</b></div>
+      </div>
+      <div class="columns is-mobile is-desktop is-tablet">
+        <div class="column is-2-desktop is-4-mobile is-3-tablet form-field">
+          <label for="shop">Магазин</label>
+        </div>
+        <div class="column is-10-desktop is-8-mobile is-9-tablet">
+          <div class="control">
+            <input id="shop" type="checkbox">
+          </div>
+        </div>
+      </div>
+      <div class="columns is-desktop is-mobile is-tablet">
+        <div class="column is-2-desktop is-4-mobile is-3-tablet form-field">
+          <label for="regional-shop">Региональная сеть магазинов</label>
+        </div>
+        <div class="column is-10-desktop is-8-mobile is-9-tablet">
+          <div class="control">
+            <input id="regional-shop" type="checkbox">
+          </div>
+        </div>
+      </div>
+      <div class="columns is-desktop is-mobile is-tablet">
+        <div class="column is-2-desktop is-4-mobile is-3-tablet form-field">
+          <label for="federal-shop">Федеральная сеть магазинов</label>
+        </div>
+        <div class="column is-10-desktop is-8-mobile is-9-tablet">
+          <div class="control">
+            <input id="federal-shop" type="checkbox">
+          </div>
+        </div>
+      </div>
+      <div class="columns is-desktop is-mobile is-tablet">
+        <div class="column is-2-desktop is-4-mobile is-3-tablet form-field">
+          <label for="online-shop">Интернет-магазин</label>
+        </div>
+        <div class="column is-8-mobile is-10-desktop is-9-tablet">
+          <div class="control">
+            <input id="online-shop" type="checkbox">
+          </div>
+        </div>
+      </div>
+      <div class="columns is-desktop is-mobile is-tablet">
+        <div class="column is-2-desktop is-4-mobile is-3-tablet form-field">
+          <label for="autoservice">Автосервис</label>
+        </div>
+        <div class="column is-8-mobile is-10-desktop is-9-tablet">
+          <div class="control">
+            <input id="autoservice" type="checkbox">
+          </div>
+        </div>
+      </div>
+      <div class="columns is-desktop is-mobile is-tablet">
+        <div class="column is-2-desktop is-3-mobile is-2-tablet form-field">
+          <label for="other">Прочее</label>
+        </div>
+        <div class="column is-10-desktop is-9-mobile is-10-tablet">
+          <div class="control">
+            <input class="input" id="other" type="text" formControlName="other">
+          </div>
+        </div>
+      </div>
+      <div class="columns is-desktop is-mobile">
+        <div class="column is-offset-2-desktop is-offset-1-mobile" [hidden]="captcha">
+          <re-captcha formControlName="captcha" (resolved)="resolve($event)" siteKey="6LdoPY8hAAAAAB5ZM64ZHppjTQx7WzXsiQaU9Y7G"></re-captcha>
+        </div>
+      </div>
+      <div [hidden]="!captcha"></div>
+      <div class="columns">
+        <div class="column is-3">
+          <div class="buttons">
+            <button [disabled]="form.invalid" class="button send-button" type="submit">Отправить заявку</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
